@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+
+        h1 {
+            padding: 30px;
+            text-align: center;
+        }
+
+        #title {
+            width: 100%;
+            text-align: center;
+            color: whitesmoke;
+            background-color: #386ea0;
+            margin-bottom: 20px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .helptext {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            font-size: 9px;
+        }
+
+        #title div {
+            font-family: serif;
+            font-size: 60px;
+            font-style: normal;
+
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: whitesmoke;
+
+            padding: 20px;
+        }
+
+        #main {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #99C1F6;
+            min-height: 500px;
+            padding-bottom: 100px;
+        }
+
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        form {
+            width: 600px;
+            font-family: sans;
+            font-weight: bolder;
+        }
+
+        table tr td {
+            padding: 2px;
+            margin: 5px;
+            border: 2px black solid;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            padding: 0;
+
+            margin-left: auto;
+            margin-right: auto;
+            width: 95%;
+
+            font-family: sans;
+            font-weight: bold;
+
+        }
+
+        .content {
+            font-family: serif;
+            text-align: center;
+            border: 10px black solid;
+            margin: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+
+        .alert {
+            color: #806625;
+            font-weight: bolder;
+            font-family: serif;
+            text-align: center;
+            border: 10px black solid;
+            margin: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-color: #5c7480;
+        }
+
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div>
+            {{ title }}
+        </div>
+    </div>
+
+    <div class="alert">
+        {% if info %}
+            {{ info }}
+        {% else %}
+            Page is still under construction <br/>
+            I won't change database though so u can add your projects now <br/>
+            19May @CZIiTT Room=(?) time=[18-10]
+        {% endif %}
+    </div>
+
+    <div class="content">
+        On 19 May in 16 hours, try to create, learn and discover.<br/>
+        Welcome to our first Scruffy Hackathon - Hackathon with no prize so try softer.<br/>
+        Main reason is to make programmers get to know each other, try new technologies and eat pizza <3<br/>
+        Without press, try to have a good time, do your homework app or create some masterpiece that u couldn't motivate
+        to.<br/><br/>
+
+        Create your own project so other will know and can join. <br/>
+        Join project to get to know other people and do something together <br/>
+        Just come as you are - but without any guarantee of the place in <br/>
+    </div>
+
+    <h1>
+        Registered Projects
+    </h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th style="width: 500px;">Description</th>
+            <th>privacy</th>
+        </tr>
+        </thead>
+        {% for project in projects %}
+
+            <tr>
+                <td style="width:180px; overflow: hidden"><a
+                        href="/project/{{ project.id }}">{{ project.project_name }}</a></td>
+                <td style="font-size: 12px">{{ project.description }}...</td>
+                <td> {% if  project.privacy %}public{% else %}private{% endif %} </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <a href="form">
+                    Add one
+                </a>
+            </td>
+        </tr>
+    </table>
+    <h1>Statistics</h1>
+    <h2 style="color: darkred;">Limit on members is weak as this page and is used only as approximation</h2>
+    <h2>Number of joiners: {{ stat.mem }}/60</h2>
+    <h2>Current theoretical capacity for participants: {{ stat.max }}/60</h2>
+
+</div>
+</body>
+</html>
+
+

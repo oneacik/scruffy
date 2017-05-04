@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+
+        h1 {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #title {
+            width: 100%;
+            text-align: center;
+            color: whitesmoke;
+            background-color: #386ea0;
+            margin-bottom: 20px;
+        }
+
+        .helptext {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            font-size: 9px;
+        }
+
+        #title div {
+            font-family: serif;
+            font-size: 60px;
+            font-style: normal;
+
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: whitesmoke;
+
+            padding: 20px;
+        }
+
+        #main {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #99C1F6;
+            min-height: 500px;
+            padding-bottom: 100px;
+        }
+
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        form {
+            width: 600px;
+            font-family: sans;
+            font-weight: bolder;
+        }
+
+        table tr td {
+            padding: 2px;
+            margin: 5px;
+            border: 2px black solid;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            padding: 0;
+
+            margin-left: auto;
+            margin-right: auto;
+            width: 95%;
+
+            font-family: sans;
+            font-weight: bold;
+
+        }
+
+        .content {
+            font-family: serif;
+            text-align: center;
+            border: 10px black solid;
+            margin: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+
+        .alert {
+            color: #806625;
+            font-weight: bolder;
+            font-family: serif;
+            text-align: center;
+            border: 10px black solid;
+            margin: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-color: #5c7480;
+        }
+
+        .pre {
+            white-space: pre-wrap;
+            margin: 20px;
+            padding: 10px;
+            width: 730px;
+            border-radius: 10px;
+            border: 6px black dotted;
+
+            font-family: "Lucida Console", Monaco, monospace;
+        }
+
+        form {
+            width: 100%;
+            text-align: center;
+
+        }
+
+        input {
+
+            font-size: 30px;
+            text-align: center;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px black solid;
+        }
+
+        input:hover {
+            border-bottom: 1px white solid;
+        }
+
+        input:focus {
+
+            border: none;
+
+        }
+
+        ol {
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 3px solid black;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div>
+            {{ project.project_name }}
+        </div>
+    </div>
+
+    <h1> Description </h1>
+    <div class="pre">{{ project.description }}</div>
+
+    <h1> Hall Of Members<br/>limit: {{ project.people_limit }}</h1>
+
+    {% if project.privacy %}
+
+        <ol style="text-align: center">
+            {% for meme in members %}
+                <li>{{ meme.email }}</li>
+            {% endfor %}
+        </ol>
+
+        <h1 style="margin-top: 40px;"> Join! </h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="E-Mail"><br/><br/>
+            <input type="submit">
+        </form>
+    {% endif %}
+</div>
+</body>
+</html>
+
+

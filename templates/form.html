@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+
+        #title {
+            width: 100%;
+            text-align: center;
+            color: whitesmoke;
+            background-color: #386ea0;
+            margin-bottom: 20px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .helptext {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            font-size: 9px;
+        }
+
+        #title div {
+            font-family: serif;
+            font-size: 60px;
+            font-style: normal;
+
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: whitesmoke;
+
+            padding: 20px;
+        }
+
+        #main {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #99C1F6;
+        }
+
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        form {
+            width: 600px;
+            font-family: sans;
+        }
+
+        form tr th {
+            color: #f4f6f7;
+            background-color: #39454E;
+            border: 10px #99C1F6 solid;
+        }
+
+        form tr td {
+
+            border: 10px #99C1F6 solid
+        }
+
+        form tr td input {
+            width: 100%;
+            height: 100%;
+        }
+
+        form tr td select{
+            width: 100%;
+            height: 100%;
+        }
+
+        form tr td input[type=radio] {
+            width: inherit;
+        }
+
+        form tr td input[type=submit] {
+            color: #f4f6f7;
+            background-color: #39454E;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        form tr td input[type=submit]:hover {
+            background-color: #5c7480;
+        }
+
+        form tr td textarea {
+            width: 100%;
+            height: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            padding: 0;
+            margin: 0;
+            table-layout: fixed;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="title">
+        <div>
+            {{ title }}
+        </div>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>
+                    <div style="width: 370px"></div>
+                </th>
+                <td>
+                    <div style="width: 370px"></div>
+                </td>
+            </tr>
+            {{ form.as_table }}
+            <tr>
+                <td >
+                    <input type="submit">
+                </td>
+
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
