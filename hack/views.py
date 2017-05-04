@@ -17,7 +17,6 @@ from untitled3.fun import active, getProjects
 
 
 def send_activision(to, id, time):
-    print(to)
     html_content = render_to_string('email.html', {"url": urlencode({'id': id, 'time': time})})  # ...
     text_content = strip_tags(html_content)  # this strips the html, so people will have the text as well.
     msg = EmailMultiAlternatives(to, text_content, "no-reply@smartstuff.me", [to])
@@ -25,7 +24,6 @@ def send_activision(to, id, time):
     msg.send()
 
 def send_join(to, pid, uid, time):
-    print(to)
     html_content = render_to_string('join.html', {"url": urlencode({'id': uid, 'pid': pid, 'time': time})})  # ...
     text_content = strip_tags(html_content)  # this strips the html, so people will have the text as well.
     msg = EmailMultiAlternatives(to, text_content, "no-reply@smartstuff.me", [to])
