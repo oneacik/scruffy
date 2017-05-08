@@ -33,7 +33,7 @@ def send_join(to, pid, uid, time):
 def getStat():
 
     maxx=Project.objects.filter(active=True).aggregate(max=Sum('people_limit'))["max"]
-    ppl=Hacker.objects.exclude(project=None).count()
+    ppl=Hacker.objects.exclude(project=None).filter(project__active=True).count()
     return {"mem":ppl, "max":maxx}
 
 
