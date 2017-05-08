@@ -64,6 +64,11 @@
             font-weight: bolder;
         }
 
+        table th {
+            color: black;
+            border: 2px black solid;
+        }
+
         table tr td {
             padding: 2px;
             margin: 5px;
@@ -82,6 +87,11 @@
             font-family: sans;
             font-weight: bold;
 
+        }
+
+        a {
+            color: #1A2C50;
+            text-decoration: none;
         }
 
         .content {
@@ -103,7 +113,12 @@
             margin: 20px;
             padding-top: 20px;
             padding-bottom: 20px;
-            border-color: #5c7480;
+            border-color: #162633;
+        }
+
+        .mark {
+            background-color: #2F8795;
+            padding-bottom: 30px;
         }
 
     </style>
@@ -128,48 +143,55 @@
 
     <div class="content">
         On 19 May in 16 hours, try to create, learn and discover.<br/>
-        Welcome to our first Scruffy Hackathon - Hackathon with no prize so try softer.<br/>
+        Welcome to our first Scruffy Hackathon - Hackathon where cooperation is the biggest prize.<br/>
         Main reason is to make programmers get to know each other, try new technologies and eat pizza <3<br/>
         Without press, try to have a good time, do your homework app or create some masterpiece that u couldn't motivate
         to.<br/><br/>
 
         Create your own project so other will know and can join. <br/>
-        Join project to get to know other people and do something together <br/>
-        Just come as you are - but without any guarantee of the place in <br/>
+        Join a project to get to know other people and do something together. <br/>
+        Or just come as you are and have a good time. <br/>
     </div>
 
-    <h1>
-        Registered Projects
-    </h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th style="width: 500px;">Description</th>
-            <th>privacy</th>
-        </tr>
-        </thead>
-        {% for project in projects %}
-
+    <div class="mark">
+        <h1>
+            Registered Projects
+        </h1>
+        <table>
+            <thead>
             <tr>
-                <td style="width:180px; overflow: hidden"><a
-                        href="/project/{{ project.id }}">{{ project.project_name }}</a></td>
-                <td style="font-size: 12px">{{ project.description }}...</td>
-                <td> {% if  project.privacy %}public{% else %}private{% endif %} </td>
+                <th>Name</th>
+                <th style="width: 500px;">Description</th>
+                <th>privacy</th>
             </tr>
-        {% endfor %}
-        <tr>
-            <td>
-                <a href="form">
-                    Add one
-                </a>
-            </td>
-        </tr>
-    </table>
+            </thead>
+            {% for project in projects %}
+
+                <tr>
+                    <td style="width:180px; overflow: hidden"><a
+                            href="/project/{{ project.id }}">{{ project.project_name }}</a></td>
+                    <td style="font-size: 12px">{{ project.description }}...</td>
+                    <td> {% if  project.privacy %}public{% else %}private{% endif %} </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    <a href="form">
+                        Add new
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
     <h1>Statistics</h1>
-    <h2 style="color: darkred;">Limit on members is weak as this page and is used only as approximation</h2>
-    <h2>Number of joiners: {{ stat.mem }}/60</h2>
-    <h2>Current theoretical capacity for participants: {{ stat.max }}/60</h2>
+    <div style="padding-left: 30px">
+
+        <h2 style="color: darkred;">These stats are used only as approximation</h2>
+        <h2>Number of joiners: {{ stat.mem }}/50</h2>
+        <h2>Current theoretical capacity for participants: {{ stat.max }}/50</h2>
+    </div>
 
 </div>
 </body>

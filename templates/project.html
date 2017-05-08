@@ -147,6 +147,29 @@
             padding-right: 30px;
         }
 
+        .mark {
+
+            padding: 10px;
+            width: 400px;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            color: black;
+            
+        }
+
+        .impress {
+            border-radius: 10px;
+            padding-bottom: 10px;
+            width: 400px;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #76A1D2;
+
+
+        }
+
     </style>
 </head>
 <body>
@@ -160,23 +183,30 @@
     <h1> Description </h1>
     <div class="pre">{{ project.description }}</div>
 
-    <h1> Hall Of Members<br/>limit: {{ project.people_limit }}</h1>
-
-    {% if project.privacy %}
-
-        <ol style="text-align: center">
-            {% for meme in members %}
-                <li>{{ meme.email }}</li>
-            {% endfor %}
-        </ol>
-
+    <div class="impress">
         <h1 style="margin-top: 40px;"> Join! </h1>
         <form method="post">
             {% csrf_token %}
             <input type="email" name="email" placeholder="E-Mail"><br/><br/>
             <input type="submit">
         </form>
-    {% endif %}
+    </div>
+
+
+    <div class="mark">
+
+        <h1> Hall Of Members<br/>limit: {{ project.people_limit }}</h1>
+
+        {% if project.privacy %}
+
+            <ol style="text-align: center">
+                {% for meme in members %}
+                    <li>{{ meme.email }}</li>
+                {% endfor %}
+            </ol>
+            </div>
+
+        {% endif %}
 </div>
 </body>
 </html>
