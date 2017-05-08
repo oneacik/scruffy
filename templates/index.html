@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -44,13 +45,13 @@
             padding: 20px;
         }
 
-        #main {
+        .main {
             width: 800px;
             margin-left: auto;
             margin-right: auto;
             background-color: #99C1F6;
             min-height: 500px;
-            padding-bottom: 100px;
+            padding-bottom: 20px;
         }
 
         * {
@@ -121,10 +122,32 @@
             padding-bottom: 30px;
         }
 
+        img {
+            height: 50px
+        }
+
+        #footer {
+
+            padding: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height: 50px;
+            min-height: 0;
+            text-align: center;
+            font-size: 50px;
+            margin-top: 20px;
+
+        }
+
+        #contact {
+            text-align: center;
+
+        }
+
     </style>
 </head>
 <body>
-<div id="main">
+<div class="main">
     <div id="title">
         <div>
             Scruffy Hackathon 2017
@@ -135,22 +158,26 @@
         {% if info %}
             {{ info }}
         {% else %}
-            Page is still under construction <br/>
-            I won't change database though so u can add your projects now <br/>
             19May @CZIiTT Room=(?) time=[18-10]
         {% endif %}
     </div>
 
     <div class="content">
         On 19 May in 16 hours, try to create, learn and discover.<br/>
-        Welcome to our first Scruffy Hackathon - Hackathon where cooperation is the biggest prize.<br/>
+        Welcome to our first Scruffy Hackathon - Event where cooperation is the biggest prize.<br/>
         Main reason is to make programmers get to know each other, try new technologies and eat pizza <3<br/>
         Without press, try to have a good time, do your homework app or create some masterpiece that u couldn't motivate
         to.<br/><br/>
 
-        Create your own project so other will know and can join. <br/>
-        Join a project to get to know other people and do something together. <br/>
-        Or just come as you are and have a good time. <br/>
+        Create your own project so other will know and could join. <br/>
+        Join a project to get to know other people and do something amazing together. <br/>
+        Or just come as you are and have a good time. <br/><br/>
+
+        Our Hackathon is sponsored by CZIiTT & Samsung.<br/>
+        Samsung obliged us to send you one letter from their HR.<br/>
+        If u don't want to be emailed please contact me.
+
+
     </div>
 
     <div class="mark">
@@ -186,14 +213,22 @@
     </div>
 
     <h1>Statistics</h1>
-    <div style="padding-left: 30px">
+    <div style="padding-left: 30px; padding-bottom: 20px">
 
         <h2 style="color: darkred;">These stats are used only as approximation</h2>
-        <h2>Number of joiners: {{ stat.mem }}/50</h2>
+        <h2>Number of registered programmers: {{ stat.mem }}/50</h2>
         <h2>Current theoretical capacity for participants: {{ stat.max }}/50</h2>
     </div>
 
+    <div id="footer" class="main mark">
+        <img src="http://siw.org.pl/wp-content/uploads/2016/11/logo-CZIiTT-z-rozwinieciem.png">
+        <img src="http://www.fahrenheit-212.com/wp-content/uploads/2015/06/Samsung.png">
+    </div>
+    <div id="contact" style="padding-top: 20px">
+        Contact: <u>are we programmers yet @ gmail.com</u>
+    </div>
 </div>
+
 </body>
 </html>
 
