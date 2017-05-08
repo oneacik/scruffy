@@ -26,7 +26,7 @@ SECRET_KEY = '3-kt592(7np1@bnsr+pz6c0l25%*v-@9hp0_h%zr7iz2o3j&p%'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["smartstuff.me"]
+ALLOWED_HOSTS = ["smartstuff.me","hack.smartstuff.me"]
 
 
 
