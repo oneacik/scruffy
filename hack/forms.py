@@ -21,7 +21,7 @@ class ProjectForm(ModelForm):
 
     def clean_email(self):
         email=self.cleaned_data['email']
-        if Project.objects.filter(email=email, active=True).exists():
+        if Project.objects.filter(email=email, active=True).exists() and self.instance.pk==None:
             raise forms.ValidationError("U can't have more than one project activated")
         return email
 

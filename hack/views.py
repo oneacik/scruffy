@@ -86,12 +86,31 @@ def main(request):
     info +=active(request);
     return render(request, "../templates/index.html", {"title" : "Scruffy Hackaton 2017","info" : info, "projects":getProjects(), "stat" : getStat() });
 
-def delete(request):
-    info = "You deactivated your project succesfully ;-;"
+def edit(request):
+    insta = Project.objects.get(id=request.GET['id'], time=request.GET['time']);
 
-    get = Project.objects.get(id=request.GET['id'],time=request.GET['time'])
-    get.active=False;
-    get.save()
+    if request.method == "POST":
+        join = ProjectForm(request.POST, instance=insta);
+        if join.is_valid():
+            join.save();
+            return render(request, "../templates/index.html", {"title": "Scruffy Hackaton 2017",
+                                                               "info": "Project Updated!",
+                                                               "projects": getProjects()});
+        else:
+            return render(request, "../templates/form.html", {"form": join, "title": "Project Registration Form"});
+
+    else:
+        join = ProjectForm(instance=insta);
+        return render(request, "../templates/form.html", {"form": join, "title": "Project Registration Form"});
+
+
+
+
+
+def delete(request):
+    info = "You removed your project succesfully ;-"
+
+    get = Project.objects.get(id=request.GET['id'],time=request.GET['time']).delete()
 
     return render(request, "../templates/index.html",
                   {"title": "Scruffy Hackaton 2017", "info": info, "projects": getProjects(), "stat": getStat()});

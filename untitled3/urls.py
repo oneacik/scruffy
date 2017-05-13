@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^form$', views.proform),
     url(r'^project/(.*)$', views.project),
     url(r'^delete$', views.delete),
+    url(r'^edit$', views.edit),
 ]
