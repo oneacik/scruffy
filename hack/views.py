@@ -54,7 +54,7 @@ def proform(request):
         key = model.pk
         send_activision(form.data['email'], key, model.time )
         print(model.time)
-        return render(request, "../templates/index.html", {"title" : "Scruffy Hackaton 2017", "info" : "You registered your project - I am very proud of you", "projects":getProjects() });
+        return render(request, "../templates/index.html", {"title" : "Scruffy Hackaton 2017", "info" : "You registered your project - Check your email now and spam.", "projects":getProjects() });
 
     return render(request, "../templates/form.html", {"form": ProjectForm(), "title": "Project Registration Form"});
 
